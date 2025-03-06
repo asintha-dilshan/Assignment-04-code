@@ -123,16 +123,11 @@ app.use((req, res) => {
 
 (async () => {
   try {
-    await collegeData
-      .initialize()
-      .then(() => {
-        app.listen(process.env.PORT, () => {
-          console.log(`Server listening on port ${process.env.PORT}`);
-        });
-      })
-      .catch((err) => {
-        console.error("Failed to initialize data: ", err);
+    await collegeData.initialize().then(() => {
+      app.listen(process.env.PORT, () => {
+        console.log(`Server listening on port ${process.env.PORT}`);
       });
+    });
     console.log("Data initialized successfully");
   } catch (err) {
     console.error("Failed to initialize data: ", err);
